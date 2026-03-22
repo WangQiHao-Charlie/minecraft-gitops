@@ -12,7 +12,7 @@
 ## 引导
 
 ```bash
-kubectl apply -n argocd -f gitops/argocd/bootstrap/root-app.yaml
+kubectl apply -n argocd -f argocd/bootstrap/root-app.yaml
 ```
 
 ## Backend mTLS

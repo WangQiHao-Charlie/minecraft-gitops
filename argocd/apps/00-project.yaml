@@ -8,8 +8,8 @@ metadata:
 spec:
   description: GitOps project for minecraft backend and operator
   sourceRepos:
-  - https://github.com/WangQiHao-Charlie/minecraft-backend.git
-  - git@github.com:WangQiHao-Charlie/minecraft-backend.git
+  - https://github.com/WangQiHao-Charlie/minecraft-gitops.git
+  - git@github.com:WangQiHao-Charlie/minecraft-gitops.git
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc

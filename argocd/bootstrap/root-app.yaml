@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/WangQiHao-Charlie/minecraft-backend.git
+    repoURL: https://github.com/WangQiHao-Charlie/minecraft-gitops.git
     targetRevision: main
-    path: minecraft/gitops/argocd/apps
+    path: argocd/apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

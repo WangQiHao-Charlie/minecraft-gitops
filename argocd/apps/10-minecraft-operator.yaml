@@ -8,9 +8,9 @@ metadata:
 spec:
   project: minecraft
   source:
-    repoURL: https://github.com/WangQiHao-Charlie/minecraft-backend.git
+    repoURL: https://github.com/WangQiHao-Charlie/minecraft-gitops.git
     targetRevision: main
-    path: gitops/argocd/workloads/minecraft-operator
+    path: argocd/workloads/minecraft-operator
   destination:
     server: https://kubernetes.default.svc
     namespace: minecraft-operator-system
