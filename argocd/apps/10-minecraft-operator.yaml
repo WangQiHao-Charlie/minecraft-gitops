@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minecraft-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+spec:
+  project: minecraft
+  source:
+    repoURL: https://github.com/WangQiHao-Charlie/minecraft-backend.git
+    targetRevision: main
+    path: gitops/argocd/workloads/minecraft-operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: minecraft-operator-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true

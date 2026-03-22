@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minecraft-backend
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  project: minecraft
+  source:
+    repoURL: https://github.com/WangQiHao-Charlie/minecraft-backend.git
+    targetRevision: main
+    path: gitops/argocd/workloads/backend
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mc-infra
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true

@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-backend
+  namespace: mc-infra
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  labels:
+    app.kubernetes.io/name: minecraft-backend
+    app.kubernetes.io/part-of: minecraft-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minecraft-backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: minecraft-backend
+        app.kubernetes.io/part-of: minecraft-platform
+    spec:
+      serviceAccountName: minecraft-backend
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: backend
+        image: ghcr.io/wangqihao-charlie/minecraft-backend:sha-1166ea6
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SERVER_ADDR
+          value: :8080
+        - name: PROMETHEUS_URL
+          value: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          tcpSocket:
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true

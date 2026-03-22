@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: minecraft-backend
+  namespace: mc-infra
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  host: minecraft-backend.mc-infra.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE

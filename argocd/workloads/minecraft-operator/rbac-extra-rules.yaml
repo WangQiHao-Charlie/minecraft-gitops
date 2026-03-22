@@ -1,0 +1,32 @@
+- op: add
+  path: /rules/-
+  value:
+    apiGroups:
+    - ""
+    resources:
+    - configmaps
+    - services
+    - persistentvolumeclaims
+    verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+- op: add
+  path: /rules/-
+  value:
+    apiGroups:
+    - apps
+    resources:
+    - statefulsets
+    verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
