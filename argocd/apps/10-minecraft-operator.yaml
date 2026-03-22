@@ -11,6 +11,9 @@ spec:
     repoURL: https://github.com/WangQiHao-Charlie/minecraft-operator.git
     targetRevision: main
     path: config/default
+    kustomize:
+      images:
+      - ghcr.io/wangqihao-charlie/minecraft-operator:sha-29483af
   destination:
     server: https://kubernetes.default.svc
     namespace: minecraft-operator-system
