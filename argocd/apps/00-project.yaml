@@ -10,6 +10,8 @@ spec:
   sourceRepos:
   - https://github.com/WangQiHao-Charlie/minecraft-gitops.git
   - git@github.com:WangQiHao-Charlie/minecraft-gitops.git
+  - https://github.com/WangQiHao-Charlie/minecraft-operator.git
+  - git@github.com:WangQiHao-Charlie/minecraft-operator.git
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
