@@ -26,7 +26,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: backend
-        image: ghcr.io/wangqihao-charlie/minecraft-backend:sha-1166ea6
+        image: ghcr.io/wangqihao-charlie/minecraft-backend:latest
         imagePullPolicy: IfNotPresent
         env:
         - name: SERVER_ADDR

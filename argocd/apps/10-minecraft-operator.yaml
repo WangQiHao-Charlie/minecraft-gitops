@@ -13,7 +13,7 @@ spec:
     path: config/default
     kustomize:
       images:
-      - controller=ghcr.io/wangqihao-charlie/minecraft-operator:sha-29483af
+      - controller=ghcr.io/wangqihao-charlie/minecraft-operator:latest
   destination:
     server: https://kubernetes.default.svc
     namespace: minecraft-operator-system
